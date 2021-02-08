@@ -17,6 +17,12 @@ pipeline {
             git branch: 'main', url: 'https://github.com/darey-devops/php-todo.git'
       }
     }
+       stage('Code Analysis') {
+      steps {
+            sh 'phploc app/ --log-csv build/logs/phploc.csv'
+
+      }
+    }
  
       stage('Execute Unit Tests') {
       steps {
